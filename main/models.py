@@ -5,7 +5,7 @@ import datetime
 
 class Category(models.Model):
     name = models.CharField('Категория', max_length=50)
-
+    link = models.CharField('Категория', max_length=50)
     def __str__(self):
         return self.name
 
@@ -27,7 +27,6 @@ class ReviewOld(models.Model):
 
 class Review(models.Model):
     author = models.CharField('Автор', max_length=50)
-    #category = models.ManyToOneRel('Категории', Category, 'Категория')
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     date = models.DateField('Дата добавления', auto_now_add=True)
     time = models.TimeField('Время обращения', auto_now_add=True)
