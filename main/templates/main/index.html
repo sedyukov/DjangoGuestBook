@@ -21,9 +21,9 @@
             <li class="dropdown">
             	<a class="dropbtn">Категории</a>
 				 <div class="dropdown-content">
-				    <a href="#">Оценка персонала</a>
-				    <a href="#">Сотрудничество</a>
-				    <a href="#">Жалобы</a>
+                     {% for el in categories %}
+				    <a href="#">{{ el.name }}</a>
+                     {% endfor %}
 				 </div>
             </li>
             <li class="dropdown">
@@ -44,16 +44,14 @@
                         <div class="review__1">
                             <ul>
                                 <li class="review__name">{{ el.author }}</li>
-                                <li class="review__name-info">Дата обращения:  04.02.2021</li>
-                                <li class="review__name-info">Время сеанса:  3 часа 22 минуты</li>
+                                <li class="review__name-info">Дата обращения:  {{ el.date }}</li>
+                                <li class="review__name-info">Время сеанса:   {{ el.time }}</li>
                                 <li class="review__name-info">Категория: {{ el.category }}</li>
                             </ul>
                         </div>
                         <div class="review__2">
                             <p>Текст записи:<br><br>
-                                Значимость этих проблем настолько очевидна, что рамки и место обучения кадров влечет за собой
-                                процесс внедрения и модернизации существенных финансовых и административных условий.
-                                Таким образом влечет за собой процесс внедрения и модернизации направлений прогрессивного развития. </p>
+                                {{ el.text }} </p>
                         </div>
                         <div class="review__3">
                             <img src="{% static "images/edit.svg" %}" alt="edit">
@@ -62,96 +60,6 @@
                     </div>
                 </div>
             {% endfor %}
-
-            <div class="review-list__item">
-                <div class="review__contain">
-                    <div class="review__1">
-                        <ul>
-                            <li class="review__name"> dddddd</li>
-                            <li class="review__name-info">Дата обращения:  04.02.2021</li>
-                            <li class="review__name-info">Время сеанса:  3 часа 22 минуты</li>
-                            <li class="review__name-info">Категория: Оценка персонала</li>
-                        </ul>
-                    </div>
-                    <div class="review__2">
-                        <p>Текст записи:<br><br>
-                            Значимость этих проблем настолько очевидна, что рамки и место обучения кадров влечет за собой
-                            процесс внедрения и модернизации существенных финансовых и административных условий.
-                            Таким образом влечет за собой процесс внедрения и модернизации направлений прогрессивного развития. </p>
-                    </div>
-                    <div class="review__3">
-                        <img src="{% static "images/edit.svg" %}" alt="edit">
-                        <img src="{% static "images/delete.svg" %}" alt="delete">
-                    </div>
-                </div>
-            </div>
-            <div class="review-list__item">
-                <div class="review__contain">
-                    <div class="review__1">
-                        <ul>
-                            <li class="review__name">Олег Григорьев</li>
-                            <li class="review__name-info">Дата обращения:  23.12.2020</li>
-                            <li class="review__name-info">Время сеанса:  2 часа 4 минуты</li>
-                            <li class="review__name-info">Категория: Сотрудничество</li>
-                        </ul>
-                    </div>
-                    <div class="review__2">
-                        <p>Текст записи:<br><br>
-                            Значимость этих проблем настолько очевидна, что рамки и место обучения кадров влечет за собой
-                            процесс внедрения и модернизации существенных финансовых и административных условий.
-                            Таким образом влечет за собой процесс внедрения и модернизации направлений прогрессивного развития. </p>
-                    </div>
-                    <div class="review__3">
-                        <img src="{% static "images/edit.svg" %}" alt="edit">
-                        <img src="{% static "images/delete.svg" %}" alt="delete">
-                    </div>
-                </div>
-            </div>
-            <div class="review-list__item">
-                <div class="review__contain">
-                    <div class="review__1">
-                        <ul>
-                            <li class="review__name">Андрей Долгопрудный</li>
-                            <li class="review__name-info">Дата обращения:  04.02.2021</li>
-                            <li class="review__name-info">Время сеанса:  3 часа 22 минуты</li>
-                            <li class="review__name-info">Категория: Оценка персонала</li>
-                        </ul>
-                    </div>
-                    <div class="review__2">
-                        <p>Текст записи:<br><br>
-                            Значимость этих проблем настолько очевидна, что рамки и место обучения кадров влечет за собой
-                            процесс внедрения и модернизации существенных финансовых и административных условий.
-                            Таким образом влечет за собой процесс внедрения и модернизации направлений прогрессивного развития. </p>
-                    </div>
-                    <div class="review__3">
-                        <img src="{% static "images/edit.svg" %}" alt="edit">
-                        <img src="{% static "images/delete.svg" %}" alt="delete">
-                    </div>
-                </div>
-            </div>
-            <div class="review-list__item">
-                <div class="review__contain">
-                    <div class="review__1">
-                        <ul>
-                            <li class="review__name">Олег Григорьев</li>
-                            <li class="review__name-info">Дата обращения:  23.12.2020</li>
-                            <li class="review__name-info">Время сеанса:  2 часа 4 минуты</li>
-                            <li class="review__name-info">Категория: Сотрудничество</li>
-                        </ul>
-                    </div>
-                    <div class="review__2">
-                        <p>Текст записи:<br><br>
-                            Значимость этих проблем настолько очевидна, что рамки и место обучения кадров влечет за собой
-                            процесс внедрения и модернизации существенных финансовых и административных условий.
-                            Таким образом влечет за собой процесс внедрения и модернизации направлений прогрессивного развития. </p>
-                    </div>
-                    <div class="review__3">
-                        <img src="{% static "images/edit.svg" %}" alt="edit">
-                        <img src="{% static "images/delete.svg" %}" alt="delete">
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <div id="window__add">
         <p class="window__add-h">Добавление записи</p>
