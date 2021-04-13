@@ -5,24 +5,12 @@ import datetime
 
 class Category(models.Model):
     name = models.CharField('Категория', max_length=50)
-    link = models.CharField('Категория', max_length=50)
+    link = models.CharField('Ссылка', max_length=50)
     def __str__(self):
         return self.name
-
-
-class ReviewOld(models.Model):
-    author = models.CharField('Автор', max_length=50)
-    category = models.CharField('Категория', max_length=50)
-    date = models.DateField('Дата добавления', auto_now_add=True)
-    time = models.TimeField('Время обращения', auto_now_add=True)
-    text = models.TextField('Текст отзыва')
-
-    def __str__(self):
-        return self.author
-
     class Meta:
-        verbose_name = 'Отзыв'
-        verbose_name_plural = 'Отзывы'
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
 
 
 class Review(models.Model):

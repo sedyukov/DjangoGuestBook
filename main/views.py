@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Review
 from .models import Category
@@ -9,7 +9,27 @@ from .forms import ReviewForm
 def index(request):
     reviews = Review.objects.all()
     category = Category.objects.all()
-    return render(request, 'main/index.html', {'reviews': reviews, 'categories': category, 'title': "Гостевая книга"})
+    return render(request, 'main/index.html', {'reviews': reviews,
+                                               'categories': category,
+                                               'title': "Гостевая книга"})
+
+
+def create(request):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(index)
+        else:
+            error = "Форма была некорректно заполнена"
+
+    reviews = Review.objects.all()
+    category = Category.objects.all()
+    form = ReviewForm()
+    return render(request, 'main/create.html', {'reviews': reviews,
+                                               'categories': category,
+                                               'title': "Гостевая книга",
+                                               'form': form})
 
 
 def personal(request):
