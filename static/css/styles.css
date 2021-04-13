@@ -9,6 +9,10 @@ header{
     margin-bottom: 12px;
     margin-left: 111px;
 }
+.title__aim{
+    text-decoration: none;
+    color:#000;
+}
 .menu{
     color: #FFF;
     padding-top: 12px;
