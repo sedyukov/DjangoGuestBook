@@ -61,15 +61,25 @@
                 </div>
             {% endfor %}
     </div>
-    <div id="window__add">
-        <p class="window__add-h">Добавление записи</p>
-        <input type="text" size="50" placeholder="Имя, Фамилия" class="window__add-name">
-        <textarea name="review__text" cols="20" rows="3" class="window__add-text" placeholder="Текст отзыва"></textarea>
-        <div class="window__button__container">
-        	<a class="window__link" href=""><button class="window__add-button">Опубликовать</button></a>
-        	<a class="window__link" href=""><button class="window__add-button--cancel">Отменить</button></a>
-        </div>
-    </div>
+{#    <div id="window__add">#}
+{#        <p class="window__add-h">Добавление записи</p>#}
+{#        <input type="text" size="50" placeholder="Имя, Фамилия" class="window__add-name">#}
+{#        <textarea name="review__text" cols="20" rows="3" class="window__add-text" placeholder="Текст отзыва"></textarea>#}
+{#        <div class="window__button__container">#}
+{#            <button class="window__add-button" type="submit">Опубликовать</button>#}
+{#        	<button class="window__add-button--cancel">Отменить</button>#}
+{#        </div>#}
+{#    </div>#}
+        <form method="post"  id="window__add">
+            {% csrf_token %}
+            <p class="window__add-h">Добавление записи</p>
+            <input type="text" size="50" placeholder="Имя, Фамилия" class="window__add-name">
+            <textarea name="review__text" cols="20" rows="3" class="window__add-text" placeholder="Текст отзыва"></textarea>
+            <div class="window__button__container">
+            <button class="window__add-button" type="submit">Опубликовать</button>
+        	<button class="window__add-button--cancel" type="reset">Отменить</button>
+            </div>
+        </form>
     <a href="#window__add" title="Добавить" class="topbutton">
         <img class="button__add" src="{% static "images/add.svg" %}" alt="edit">
     </a>

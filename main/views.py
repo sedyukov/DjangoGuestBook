@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Review
 from .models import Category
+from .forms import ReviewForm
 # Create your views here.
 
 
