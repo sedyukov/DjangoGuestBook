@@ -35,4 +35,5 @@ class UserLoginForm(AuthenticationForm):
             'placeholder': 'Пароль',
             'id': 'hi',
         }
-))
+    )
+)

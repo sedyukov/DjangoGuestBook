@@ -9,6 +9,14 @@ header{
     margin-bottom: 12px;
     margin-left: 111px;
 }
+.alert_login{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 10px;
+    text-align: center;
+    color: red;
+}
 .menu{
     color: #FFF;
     padding-top: 12px;

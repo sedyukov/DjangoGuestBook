@@ -103,18 +103,21 @@
                 </div>
         </div>
     </div>
-
+        {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+        {% endif %}
         <form method="post"  id="window__add" action="{% url 'login' %}">
             {% csrf_token %}
             <p class="window__add-h">Авторизация <a href="/" class="button__cancel_all"> <img src="{% static "images/close-cross.png" %}" alt="Отмена"></a></p>
-
-            {{ form.username }}
-            {{ form.password }}
-
+            {% load widget_tweaks %}
+            {% render_field form.username class="window__add-name" placeholder="Имя пользователя" %}
+            {% render_field form.password class="window__add-name" placeholder="Пароль" %}
             <div class="window__button__container">
-            <button class="window__add-button" type="submit"  value="login">Войти</button>
-
+            <button class="window__add-button" type="submit" value="login">Войти</button>
             </div>
+            {% if form.errors %}
+            <p class="alert_login">Неверные данные</p>
+            {% endif %}
         </form>
 
 

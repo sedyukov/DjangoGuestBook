@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Review
 from .models import Category
-from .forms import ReviewForm, UserLoginForm
-from django.contrib.auth import logout
+from .forms import ReviewForm
+from django.contrib.auth import logout, authenticate, login
 
 # Create your views here.
 
@@ -19,23 +19,6 @@ def index(request):
 def logout_view(request):
     logout(request)
     return redirect(index)
-
-
-def login_view(request):
-    if request.method == 'POST':
-        form = UserLoginForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect(index)
-        else:
-            error = "Форма была некорректно заполнена"
-    reviews = Review.objects.order_by('-date')
-    category = Category.objects.all()
-    form = UserLoginForm()
-    return render(request, 'main/login.html', {'reviews': reviews,
-                                               'categories': category,
-                                               'title': "Гостевая книга",
-                                               'form': form})
 
 
 def create(request):

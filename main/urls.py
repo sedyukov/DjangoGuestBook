@@ -15,14 +15,6 @@ urlpatterns = [
     path('byalphauth', views.byalphauth),
     path('byalphtext', views.byalphtext),
     path('exit', views.logout_view),
-    path(
-        'login/',
-        auth_views.LoginView.as_view(
-            template_name="registration/login.html",
-            authentication_form=UserLoginForm
-        ),
-        name='login'
-    ),
 ]
 
 urlpatterns += [
