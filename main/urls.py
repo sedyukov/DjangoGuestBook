@@ -7,4 +7,7 @@ urlpatterns = [
     path('cowork', views.cowork),
     path('other', views.other),
     path('optimization', views.optimization),
+    path('bydate', views.bydate),
+    path('byalphauth', views.byalphauth),
+    path('byalphtext', views.byalphtext),
 ]

@@ -7,7 +7,7 @@ from .forms import ReviewForm
 
 
 def index(request):
-    reviews = Review.objects.all()
+    reviews = Review.objects.order_by('-date')
     category = Category.objects.all()
     return render(request, 'main/index.html', {'reviews': reviews,
                                                'categories': category,
@@ -54,3 +54,27 @@ def other(request):
     reviews = Review.objects.filter(category=5)
     category = Category.objects.all()
     return render(request, 'main/index.html', {'reviews': reviews, 'categories': category, 'title': "Гостевая книга"})
+
+
+def bydate(request):
+    reviews = Review.objects.order_by('date')
+    category = Category.objects.all()
+    return render(request, 'main/index.html', {'reviews': reviews,
+                                               'categories': category,
+                                               'title': "Гостевая книга"})
+
+
+def byalphauth(request):
+    reviews = Review.objects.order_by('author')
+    category = Category.objects.all()
+    return render(request, 'main/index.html', {'reviews': reviews,
+                                               'categories': category,
+                                               'title': "Гостевая книга"})
+
+
+def byalphtext(request):
+    reviews = Review.objects.order_by('text')
+    category = Category.objects.all()
+    return render(request, 'main/index.html', {'reviews': reviews,
+                                               'categories': category,
+                                               'title': "Гостевая книга"})
