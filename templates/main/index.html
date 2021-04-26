@@ -6,20 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static "css/create.css" %}">
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
     <link rel="shortcut icon" href="{% static "images/favicon.png" %}" type="image/png">
     <title>Гостевая книга</title>
 </head>
 <body>
     <header>
-        {{ title }}
+        <a href="/" class="title__aim">{{ title }}</a>
     </header>
 
     <div class="menu">
         <ul>
             <li class="dropdown">
-            	<a class="dropbtn">Категории</a>
+            	<a class="dropbtn menu__button">Категории</a>
 				 <div class="dropdown-content">
                      {% for el in categories %}
 				    <a href="{{ el.link }}">{{ el.name }}</a>
@@ -27,13 +28,28 @@
 				 </div>
             </li>
             <li class="dropdown">
-            	<a class="dropbtn">Сортировка</a>
+            	<a class="dropbtn menu__button">Сортировка</a>
 				 <div class="dropdown-content" id="drop__second">
-				    <a href="#">По дате</a>
-				    <a href="#">По алфавиту</a>
-				    <a href="#">По длине</a>
+				    <a href="bydate">По дате</a>
+				    <a href="byalphauth">По авторам</a>
+				    <a href="byalphtext">По текстам</a>
 				 </div>
             </li>
+            {% if user.is_authenticated %}
+            <li class="dropdown">
+                <a class="menu__button" href="bydate">Мои отзывы</a>
+            </li>
+            <li class="dropdown">
+            	<a class="menu__button" href="exit">Выход</a>
+            </li>
+            {% else %}
+                <li class="dropdown">
+                <a class="menu__button" href="login">Вход</a>
+            </li>
+            <li class="dropdown">
+                <a class="menu__button" href="bydate">Регистрация</a>
+            </li>
+            {% endif %}
         </ul>
     </div>
     <div class="wrap">
@@ -63,19 +79,7 @@
         </div>
     </div>
 
-        <form method="post"  id="window__add">
-            {% csrf_token %}
-            <p class="window__add-h">Добавление записи <a href="/" class="button__cancel_all"><img src="{% static "images/close-cross.png" %}" alt="Отмена"></a></p>
-            {{ form.author }}
-            {{ form.category }}
-            {{ form.text }}
-            <div class="window__button__container">
-            <button class="window__add-button" type="submit">Опубликовать</button>
-        	<button class="window__add-button--cancel" type="reset">Сбросить</button>
-            </div>
-        </form>
-
-    <a href="#window__add" title="Добавить" class="topbutton">
+    <a href="/create" title="Добавить" class="topbutton">
         <img class="button__add" src="{% static "images/add.svg" %}" alt="edit">
     </a>
 

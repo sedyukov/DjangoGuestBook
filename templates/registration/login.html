@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "css/login.css" %}">
+    <link rel="shortcut icon" href="{% static "images/favicon.png" %}" type="image/png">
+    <title>Гостевая книга</title>
+</head>
+<body>
+    <header>
+        <a href="/" class="title__aim" style="text-decoration: none; color:#000;">Гостевая книга</a>
+    </header>
+
+    <div class="menu">
+        <ul>
+            <li class="dropdown">
+            	<a class="dropbtn menu__button">Категории</a>
+            </li>
+            <li class="dropdown">
+            	<a class="dropbtn menu__button">Сортировка</a>
+            </li>
+            <li class="dropdown">
+            	<a class="dropbtn menu__button">Вход</a>
+            </li>
+            <li class="dropdown">
+            	<a class="dropbtn menu__button">Регистрация</a>
+            </li>
+        </ul>
+    </div>
+    </div>
+    <div class="wrap">
+        <div id="review" class="review-list">
+                <div class="review-list__item">
+                    <div class="review__contain">
+                        <div class="review__1">
+                            <ul>
+                                <li class="review__name">Олег Григорьев</li>
+                                <li class="review__name-info">Дата обращения:  23.12.2020</li>
+                                <li class="review__name-info">Время сеанса:  2 часа 4 минуты</li>
+                                <li class="review__name-info">Категория: Сотрудничество</li>
+                            </ul>
+                        </div>
+                        <div class="review__2">
+                            <p>Текст записи:<br><br>
+                            Значимость этих проблем настолько очевидна, что рамки и место обучения кадров влечет за собой
+                            процесс внедрения и модернизации существенных финансовых и административных условий.
+                            Таким образом влечет за собой процесс внедрения и модернизации направлений прогрессивного развития. </p>
+                        </div>
+                        <div class="review__3">
+                            <img src="{% static "images/edit.svg" %}" alt="edit">
+                            <img src="{% static "images/delete.svg" %}" alt="delete">
+                        </div>
+                    </div>
+                </div>
+            <div class="review-list__item">
+                    <div class="review__contain">
+                        <div class="review__1">
+                            <ul>
+                                <li class="review__name">Антон Долин</li>
+                                <li class="review__name-info">Дата обращения:  23.12.2020</li>
+                                <li class="review__name-info">Время сеанса:  2 часа 4 минуты</li>
+                                <li class="review__name-info">Категория: Сотрудничество</li>
+                            </ul>
+                        </div>
+                        <div class="review__2">
+                            <p>Текст записи:<br><br>
+                            Значимость этих проблем настолько очевидна, что рамки и место обучения кадров влечет за собой
+                            процесс внедрения и модернизации существенных финансовых и административных условий.
+                            Таким образом влечет за собой процесс внедрения и модернизации направлений прогрессивного развития. </p>
+                        </div>
+                        <div class="review__3">
+                            <img src="{% static "images/edit.svg" %}" alt="edit">
+                            <img src="{% static "images/delete.svg" %}" alt="delete">
+                        </div>
+                    </div>
+                </div>
+            <div class="review-list__item">
+                    <div class="review__contain">
+                        <div class="review__1">
+                            <ul>
+                                <li class="review__name">Андрей Долгопрудный</li>
+                                <li class="review__name-info">Дата обращения:  23.12.2020</li>
+                                <li class="review__name-info">Время сеанса:  2 часа 4 минуты</li>
+                                <li class="review__name-info">Категория: Сотрудничество</li>
+                            </ul>
+                        </div>
+                        <div class="review__2">
+                            <p>Текст записи:<br><br>
+                            Значимость этих проблем настолько очевидна, что рамки и место обучения кадров влечет за собой
+                            процесс внедрения и модернизации существенных финансовых и административных условий.
+                            Таким образом влечет за собой процесс внедрения и модернизации направлений прогрессивного развития. </p>
+                        </div>
+                        <div class="review__3">
+                            <img src="{% static "images/edit.svg" %}" alt="edit">
+                            <img src="{% static "images/delete.svg" %}" alt="delete">
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+        <form method="post"  id="window__add" action="{% url 'login' %}">
+            {% csrf_token %}
+            <p class="window__add-h">Авторизация <a href="/" class="button__cancel_all"> <img src="{% static "images/close-cross.png" %}" alt="Отмена"></a></p>
+
+            {{ form.username }}
+            {{ form.password }}
+
+            <div class="window__button__container">
+            <button class="window__add-button" type="submit"  value="login">Войти</button>
+
+            </div>
+        </form>
+
+
+</body>
+</html>

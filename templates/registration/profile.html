@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+    <link rel="shortcut icon" href="{% static "images/favicon.png" %}" type="image/png">
+    <title>Гостевая книга</title>
+</head>
+<body>
+    <header>
+        <a href="/" class="title__aim">{{ title }}</a>
+    </header>
+
+    <div class="menu">
+        <ul>
+            <li class="dropdown">
+            	<a class="dropbtn menu__button">Категории</a>
+				 <div class="dropdown-content">
+                     {% for el in categories %}
+				    <a href="{{ el.link }}">{{ el.name }}</a>
+                     {% endfor %}
+				 </div>
+            </li>
+            <li class="dropdown">
+            	<a class="dropbtn menu__button">Сортировка</a>
+				 <div class="dropdown-content" id="drop__second">
+				    <a href="bydate">По дате</a>
+				    <a href="byalphauth">По авторам</a>
+				    <a href="byalphtext">По текстам</a>
+				 </div>
+            </li>
+            <li class="dropdown">
+            	<a class="menu__button" href="bydate">Вход</a>
+            </li>
+            <li class="dropdown">
+            	<a class="menu__button" href="bydate">Регистрация</a>
+            </li>
+        </ul>
+    </div>
+    <div class="wrap">
+        <div id="review" class="review-list">
+            {% for el in reviews %}
+                <div class="review-list__item">
+                    <div class="review__contain">
+                        <div class="review__1">
+                            <ul>
+                                <li class="review__name">{{ el.author }}</li>
+                                <li class="review__name-info">Дата обращения:  {{ el.date }}</li>
+                                <li class="review__name-info">Время сеанса:   {{ el.time }}</li>
+                                <li class="review__name-info">Категория: {{ el.category }}</li>
+                            </ul>
+                        </div>
+                        <div class="review__2">
+                            <p>Текст записи:<br><br>
+                                {{ el.text }} </p>
+                        </div>
+                        <div class="review__3">
+                            <img src="{% static "images/edit.svg" %}" alt="edit">
+                            <img src="{% static "images/delete.svg" %}" alt="delete">
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <a href="/create" title="Добавить" class="topbutton">
+        <img class="button__add" src="{% static "images/add.svg" %}" alt="edit">
+    </a>
+
+</body>
+</html>

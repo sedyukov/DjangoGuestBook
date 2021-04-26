@@ -6,34 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+    <link rel="stylesheet" href="{% static "css/create.css" %}">
     <link rel="shortcut icon" href="{% static "images/favicon.png" %}" type="image/png">
     <title>Гостевая книга</title>
 </head>
 <body>
     <header>
-        <a href="/" class="title__aim">{{ title }}</a>
+        {{ title }}
     </header>
 
     <div class="menu">
         <ul>
             <li class="dropdown">
-            	<a class="dropbtn">Категории</a>
-				 <div class="dropdown-content">
-                     {% for el in categories %}
-				    <a href="{{ el.link }}">{{ el.name }}</a>
-                     {% endfor %}
-				 </div>
+            	<a class="dropbtn menu__button">Категории</a>
             </li>
             <li class="dropdown">
-            	<a class="dropbtn">Сортировка</a>
-				 <div class="dropdown-content" id="drop__second">
-				    <a href="bydate">По дате</a>
-				    <a href="byalphauth">По авторам</a>
-				    <a href="byalphtext">По текстам</a>
-				 </div>
+            	<a class="dropbtn menu__button">Сортировка</a>
+            </li>
+            <li class="dropdown">
+            	<a class="dropbtn menu__button">Вход</a>
+            </li>
+            <li class="dropdown">
+            	<a class="dropbtn menu__button">Регистрация</a>
             </li>
         </ul>
     </div>
@@ -64,9 +59,19 @@
         </div>
     </div>
 
-    <a href="/create" title="Добавить" class="topbutton">
-        <img class="button__add" src="{% static "images/add.svg" %}" alt="edit">
-    </a>
+        <form method="post"  id="window__add">
+            {% csrf_token %}
+            <p class="window__add-h">Добавление записи <a href="/" class="button__cancel_all"><img src="{% static "images/close-cross.png" %}" alt="Отмена"></a></p>
+            {{ form.author }}
+            {{ form.category }}
+            {{ form.text }}
+            <div class="window__button__container">
+            <button class="window__add-button" type="submit">Опубликовать</button>
+        	<button class="window__add-button--cancel" type="reset">Сбросить</button>
+            </div>
+        </form>
+
+
 
 </body>
 </html>
