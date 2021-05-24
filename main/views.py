@@ -2,10 +2,32 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Review
 from .models import Category
-from .forms import ReviewForm
-from django.contrib.auth import logout, authenticate, login
-
+from .forms import ReviewForm, UserRegistrationForm
+from django.contrib.auth import logout
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views import generic
+from django.views.generic import UpdateView, DeleteView
 # Create your views here.
+
+
+class ReviewUpdateView(UpdateView):
+    model = Review
+    template_name = 'main/edit.html'
+
+    form_class = ReviewForm
+
+
+class ReviewDeleteView(DeleteView):
+    model = Review
+    success_url = '/'
+    template_name = 'main/delete.html'
+
+
+class SignUpView(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'main/signup.html'
 
 
 def index(request):
@@ -85,3 +107,19 @@ def byalphtext(request):
     return render(request, 'main/index.html', {'reviews': reviews,
                                                'categories': category,
                                                'title': "Гостевая книга"})
+
+
+def register(request):
+    if request.method == 'POST':
+        user_form = UserRegistrationForm(request.POST)
+        if user_form.is_valid():
+            # Create a new user object but avoid saving it yet
+            new_user = user_form.save(commit=False)
+            # Set the chosen password
+            new_user.set_password(user_form.cleaned_data['password'])
+            # Save the User object
+            new_user.save()
+            return render(request, 'account/register_done.html', {'new_user': new_user})
+    else:
+        user_form = UserRegistrationForm()
+    return render(request, 'main/signup.html', {'form': user_form})

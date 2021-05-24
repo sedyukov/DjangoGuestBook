@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static "css/login.css" %}">
+    <link rel="stylesheet" href="{% static "css/signup.css" %}">
     <link rel="shortcut icon" href="{% static "images/favicon.png" %}" type="image/png">
     <title>Гостевая книга</title>
 </head>
@@ -104,14 +104,16 @@
         </div>
     </div>
 
-        <form method="post"  id="window__add" action="{% url 'login' %}">
+        <form method="post"  id="window__add" action=".">
             {% csrf_token %}
-            <p class="window__add-h">Авторизация <a href="/" class="button__cancel_all"> <img src="{% static "images/close-cross.png" %}" alt="Отмена"></a></p>
+            <p class="window__add-h">Регистрация <a href="/" class="button__cancel_all"> <img src="{% static "images/close-cross.png" %}" alt="Отмена"></a></p>
             {% load widget_tweaks %}
             {% render_field form.username class="window__add-name" placeholder="Имя пользователя" %}
-            {% render_field form.password class="window__add-name" placeholder="Пароль" %}
+            {% render_field form.password1 class="window__add-name" placeholder="Пароль" %}
+            {% render_field form.password2 class="window__add-name" placeholder="Повторите пароль" %}
+{#            {{ form.as_p }}#}
             <div class="window__button__container">
-            <button class="window__add-button" type="submit" value="login">Войти</button>
+            <button class="window__add-button" type="submit" value="Create my account">Зарегистрироваться</button>
             </div>
             {% if form.errors %}
             <p class="alert_login">Неверные данные</p>

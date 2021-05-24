@@ -9,12 +9,16 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static "css/styles.css" %}">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <link rel="shortcut icon" href="{% static "images/favicon.png" %}" type="image/png">
     <title>Гостевая книга</title>
 </head>
 <body>
     <header>
-        <a href="/" class="title__aim">{{ title }}</a>
+        <a href="/" class="title__aim animate__animated animate__bounce">{{ title }}</a>
     </header>
 
     <div class="menu">
@@ -47,7 +51,7 @@
                 <a class="menu__button" href="/accounts/login">Вход</a>
             </li>
             <li class="dropdown">
-                <a class="menu__button" href="bydate">Регистрация</a>
+                <a class="menu__button" href="signup">Регистрация</a>
             </li>
             {% endif %}
         </ul>
@@ -55,7 +59,7 @@
     <div class="wrap">
         <div id="review" class="review-list">
             {% for el in reviews %}
-                <div class="review-list__item">
+                <div class="review-list__item animate__animated animate__fadeInLeft">
                     <div class="review__contain">
                         <div class="review__1">
                             <ul>
