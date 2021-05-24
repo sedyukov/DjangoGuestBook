@@ -1,23 +1,7 @@
-@-webkit-keyframes autofill {
-  to {
-    color: inherit;
-    background: transparent;
-  }
-}
-
-input:-webkit-autofill {
-  -webkit-animation-name: autofill;
-  -webkit-animation-fill-mode: both;
-}
 *{
     margin: 0;
 }
-.edit_button:hover{
-    background: lightblue;
-}
-.delete_button:hover{
-    background: lightcoral;
-}
+
 header{
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
@@ -25,10 +9,6 @@ header{
     margin-top: 12px;
     margin-bottom: 12px;
     margin-left: 111px;
-}
-.title__aim{
-    text-decoration: none;
-    color:#000;
 }
 .menu{
     color: #FFF;
@@ -62,9 +42,7 @@ header{
 .wrap{
     margin: 60px 150px 146px 150px;
 }
-.text-center{
-  margin-top: 140px;
-}
+
 .review-list{
     display:flex;
     flex-wrap: wrap;
@@ -136,11 +114,11 @@ header{
 }
 #window__add {
     width: 550px;
-    height: 266px;
+    height: 100px;
     text-align: left;
     border: none;
     background-color: #FFF;
-    display: none;
+    display: block;
     position: fixed;
     top: 0;
     right: 0;
@@ -149,13 +127,13 @@ header{
     margin: auto;
     box-shadow: 0 0 0 9999px rgba(0,0,0, 0.3);
 }
-  #window__add:target {display: block;}
+
   .window__add-h{
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 15px;
     color: #000;
-    margin-left: 59px;
+    margin-left: 49px;
     margin-top: 26px;
   }
   .button__cancel_all{
@@ -178,6 +156,7 @@ header{
     margin-top: 10px;
     padding-left: 12px;
 }
+
 .window__add-cat{
     width: 200px;
     height: 26px;

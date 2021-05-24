@@ -61,7 +61,7 @@
 
         <form method="post"  id="window__add">
             {% csrf_token %}
-            <p class="window__add-h">Добавление записи <a href="/" class="button__cancel_all"><img src="{% static "images/close-cross.png" %}" alt="Отмена"></a></p>
+            <p class="window__add-h">Редактировать запись<a href="/" class="button__cancel_all"><img src="{% static "images/close-cross.png" %}" alt="Отмена"></a></p>
             {{ form.author }}
             {{ form.category }}
             {{ form.text }}

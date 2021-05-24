@@ -6,8 +6,10 @@ import datetime
 class Category(models.Model):
     name = models.CharField('Категория', max_length=50)
     link = models.CharField('Ссылка', max_length=50)
+
     def __str__(self):
         return self.name
+
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'

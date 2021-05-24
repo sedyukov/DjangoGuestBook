@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static "css/create.css" %}">
+    <link rel="stylesheet" href="{% static "css/delete.css" %}">
     <link rel="shortcut icon" href="{% static "images/favicon.png" %}" type="image/png">
     <title>Гостевая книга</title>
 </head>
@@ -61,10 +61,9 @@
 
         <form method="post"  id="window__add">
             {% csrf_token %}
-            <p class="window__add-h">Удалить запись?<a href="/" class="button__cancel_all"><img src="{% static "images/close-cross.png" %}" alt="Отмена"></a></p>
+            <p class="window__add-h">Подтвердите удаление<a href="/" class="button__cancel_all"><img src="{% static "images/close-cross.png" %}" alt="Отмена"></a></p>
             <div class="window__button__container">
-            <button class="window__add-button" type="submit">Опубликовать</button>
-        	<button class="window__add-button--cancel" type="reset">Сбросить</button>
+            <button class="window__add-button--cancel" type="submit">Подтвердить</button>
             </div>
         </form>
 

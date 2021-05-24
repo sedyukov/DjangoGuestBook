@@ -73,10 +73,16 @@
                             <p>Текст записи:<br><br>
                                 {{ el.text }} </p>
                         </div>
+                        {% if user.is_authenticated %}
                         <div class="review__3">
-                            <img src="{% static "images/edit.svg" %}" alt="edit">
-                            <img src="{% static "images/delete.svg" %}" alt="delete">
+                            <a href="{% url 'review-update' el.id %}" title="Редактировать">
+                                <img class="edit_button" src="{% static "images/edit.svg" %}" alt="edit">
+                            </a>
+                            <a href="{% url 'review-delete' el.id %}" title="Удалить">
+                                <img class="delete_button" src="{% static "images/delete.svg" %}" alt="delete">
+                            </a>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}

@@ -14,7 +14,6 @@ from django.views.generic import UpdateView, DeleteView
 class ReviewUpdateView(UpdateView):
     model = Review
     template_name = 'main/edit.html'
-
     form_class = ReviewForm
 
 
